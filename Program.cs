@@ -33,7 +33,7 @@ namespace OwnedEntityDemo {
 
         private static void InsertNewOrder () {
             var order = new SalesOrder (DateTime.Today, 100.00M);
-            //order.SetShippingAddress (PostalAddress.Create ("One Main", "Burlington", "VT", "05000"));
+            order.SetShippingAddress (PostalAddress.Create ("One Main", "Burlington", "VT", "05000"));
             order.SetBillingAddress (PostalAddress.Create ("Two Main", "Burlington", "VT", "05000"));
             //order.CopyShippingAddressToBillingAddress();
             using (var context = new OrderContext ()) {
