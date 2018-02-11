@@ -10,10 +10,8 @@ namespace OwnedEntityDemo {
   public class OrderContext : DbContext {
     public DbSet<SalesOrder> SalesOrders { get; set; }
     protected override void OnModelCreating (ModelBuilder modelBuilder) {
-      modelBuilder.Entity<SalesOrder> ()
-        .OwnsOne (s => s.BillingAddress);
-      modelBuilder.Entity<SalesOrder> ()
-        .OwnsOne (s => s.ShippingAddress);
+      modelBuilder.Entity<SalesOrder> ().OwnsOne (s => s.BillingAddress);
+      modelBuilder.Entity<SalesOrder> ().OwnsOne (s => s.ShippingAddress);
      }
     protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder) {
       optionsBuilder.UseSqlite ("Data Source=SalesOrder.db");
