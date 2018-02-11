@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace OwnedEntityDemo
 {
-
   public class SalesOrder {
     public SalesOrder (DateTime orderDate, decimal orderTotal) {
       OrderDate = orderDate;
