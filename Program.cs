@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace OwnedEntityDemo {
     class Program {
@@ -18,23 +18,23 @@ namespace OwnedEntityDemo {
             Console.WriteLine ("Before_____");
             Console.WriteLine ("Ship to: " + order.ShippingAddress?.Street);
             Console.WriteLine ("Bill to: " + order.BillingAddress?.Street);
-            //updating an existing owned entity, workaround
             order.SetBillingAddress (PostalAddress.Create ("Broadway", "NYC", "NY", "10001"));
             using (var context = new OrderContext ()) {
-              context.SalesOrders.Update(order);
-              context.SaveChanges ();
+                context.SalesOrders.Update (order);
+                context.SaveChanges ();
             }
             var storedOrder = RetrieveOrder ();
             Console.WriteLine ("After_______");
             Console.WriteLine ("Ship to: " + storedOrder.ShippingAddress?.Street);
             Console.WriteLine ("Bill to: " + storedOrder.BillingAddress?.Street);
-
         }
 
         private static void InsertNewOrder () {
             var order = new SalesOrder (DateTime.Today, 100.00M);
+            //following three statements work with different combos
+            //of commenting
             order.SetShippingAddress (PostalAddress.Create ("One Main", "Burlington", "VT", "05000"));
-            order.SetBillingAddress (PostalAddress.Create ("Two Main", "Burlington", "VT", "05000"));
+            //order.SetBillingAddress (PostalAddress.Create ("Two Main", "Burlington", "VT", "05000"));
             //order.CopyShippingAddressToBillingAddress();
             using (var context = new OrderContext ()) {
                 context.SalesOrders.Add (order);
