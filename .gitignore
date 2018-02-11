@@ -328,3 +328,5 @@ ASALocalRun/
 *.binlog
 
 SalesOrder.db
+.vscode/launch.json
+.vscode/tasks.json
