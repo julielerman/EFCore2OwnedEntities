@@ -40,7 +40,6 @@ namespace OwnedEntityDemo {
                 context.SalesOrders.Add (order);
                 context.SaveChanges ();
             }
-
         }
 
         private static SalesOrder RetrieveOrder () {
@@ -51,10 +50,11 @@ namespace OwnedEntityDemo {
             }
         }
 
+        //my ddd brain will not let me put this into the SalesOrder aggregate root
+        //this is how I can reset "empty" to "null" after a query
         private static void FixOptionalValueObjects (SalesOrder order) {
             if (order.ShippingAddress.IsEmpty ()) { order.SetShippingAddress (null); }
             if (order.BillingAddress.IsEmpty ()) { order.SetBillingAddress (null); }
-
         }
 
     }
