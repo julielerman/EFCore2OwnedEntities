@@ -20,7 +20,7 @@ namespace OwnedEntityDemo {
     public override int SaveChanges () {
       foreach (var entry in ChangeTracker.Entries ().Where (e => e.Entity is SalesOrder &&
           (e.State == EntityState.Added || e.State == EntityState.Modified))) {
-        if (entry.Entity is SalesOrder order) {
+        if (entry.Entity is SalesOrder) {
           if (entry.Reference ("ShippingAddress").CurrentValue == null) {
             entry.Reference ("ShippingAddress").CurrentValue = PostalAddress.Empty ();
           }
